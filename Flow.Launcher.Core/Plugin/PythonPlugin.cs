@@ -99,6 +99,9 @@ namespace Flow.Launcher.Core.Plugin
 
             await base.InitAsync(context);
             _startInfo.WorkingDirectory = context.CurrentPluginMetadata.PluginDirectory;
+
+            // prelaunch to improve responsiveness
+            using var process = Process.Start(_startInfo);
         }
     }
 }
